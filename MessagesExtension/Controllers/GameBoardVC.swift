@@ -23,6 +23,8 @@ class GameBoardVC: MSMessagesAppViewController
     ////////////////////////////////////////////////////////////
 
     var onLocationSelectionComplete: ((_ gameState: GameModel, _ snapshot: UIImage) -> Void)?
+    var onGameCompletion: ((_ model: GameModel, _ snapshot: UIImage) -> Void)?
+
     var wasCellSelected: Bool = false
     var selectedCell: Int?
     var model: GameModel!
@@ -36,7 +38,7 @@ class GameBoardVC: MSMessagesAppViewController
     {
         super.viewDidLoad()
 
-        if model.isComplete
+        if self.model.isComplete
         {
             let alert = UIAlertController(title: "Game Complete!", message: "The game's already finished!", preferredStyle: .alert)
             present(alert, animated: true)
@@ -52,7 +54,7 @@ class GameBoardVC: MSMessagesAppViewController
         gameBoard.onCellSelection =
         { [unowned self]
           location in
-
+            self.endTurnButton.isEnabled = true
             if self.wasCellSelected
             {
                 self.gameBoard.alterCell(at: self.selectedCell!, applying: .deselected)
@@ -60,6 +62,8 @@ class GameBoardVC: MSMessagesAppViewController
             self.gameBoard.toggleCellStyle(at: location, for: self.currentPlayer)
             self.selectedCell = location
             self.wasCellSelected = true
+
+            self.checkGameCompletion()
         }
     }
 
@@ -74,25 +78,17 @@ class GameBoardVC: MSMessagesAppViewController
     }
 }
 
+////////////////////////////////////////////////////////////
+
 extension GameBoardVC
 {
     func setupBoard()
     {
-        if let xLocations = model.xLocations
-        {
-            for xLocation in xLocations
-            {
-                gameBoard.alterCell(at: xLocation, applying: .selectedX)
-            }
-        }
+        let xLocations = self.model.xLocations ?? []
+        _ = xLocations.map { gameBoard.alterCell(at: $0, applying: .selectedX) }
 
-        if let oLocations = model.oLocations
-        {
-            for oLocation in oLocations
-            {
-                gameBoard.alterCell(at: oLocation, applying: .selectedO)
-            }
-        }
+        let oLocations = self.model.oLocations ?? []
+        _ = oLocations.map { gameBoard.alterCell(at: $0, applying: .selectedO) }
     }
 
     ////////////////////////////////////////////////////////////
@@ -106,6 +102,15 @@ extension GameBoardVC
 
     func checkGameCompletion()
     {
-        
+        let snapshot = UIImage.snapshot(from: self.gameBoard)
+        let cellsToCheck: [Int] = (self.currentPlayer == .x) ? self.gameBoard.selectedCells(of: .selectedX) ?? [] : self.gameBoard.selectedCells(of: .selectedO) ?? []
+        for cells in GameConstants.winningCells
+        {
+            if Set(cells).isSubset(of: Set(cellsToCheck))
+            {
+                self.model.isComplete = true
+                self.onGameCompletion?(self.model, snapshot)
+            }
+        }
     }
 }

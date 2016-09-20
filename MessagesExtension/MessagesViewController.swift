@@ -189,6 +189,16 @@ class MessagesViewController: MSMessagesAppViewController
             self.dismiss()
         }
 
+        controller.onGameCompletion =
+        { [unowned self]
+          model, snapshot in
+            let session = conversation.selectedMessage?.session ?? MSSession()
+            let caption = "$\(conversation.localParticipantIdentifier) won!"
+
+            self.insertMessageWith(caption: caption, model, session, snapshot, in: conversation)
+            self.dismiss()
+        }
+
         return controller
     }
 }
