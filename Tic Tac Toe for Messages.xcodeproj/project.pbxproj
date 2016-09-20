@@ -13,6 +13,12 @@
 		427E5F6B1D8B34C700A27BAB /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E5F6A1D8B34C700A27BAB /* MessagesViewController.swift */; };
 		427E5F6E1D8B34C700A27BAB /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427E5F6C1D8B34C700A27BAB /* MainInterface.storyboard */; };
 		427E5F701D8B34C700A27BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 427E5F6F1D8B34C700A27BAB /* Assets.xcassets */; };
+		427E5F7C1D8B379E00A27BAB /* GameBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E5F7B1D8B379E00A27BAB /* GameBoardVC.swift */; };
+		427E5F801D8B3B4D00A27BAB /* GameBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E5F7F1D8B3B4D00A27BAB /* GameBoardView.swift */; };
+		427E5F821D8D8E8D00A27BAB /* GameStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E5F811D8D8E8D00A27BAB /* GameStartVC.swift */; };
+		427E5F871D900D9D00A27BAB /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E5F861D900D9D00A27BAB /* GameModel.swift */; };
+		427E5F8A1D90122400A27BAB /* UIImage+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E5F891D90122400A27BAB /* UIImage+Snapshot.swift */; };
+		427E5F8C1D90370400A27BAB /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E5F8B1D90370400A27BAB /* GameConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,12 @@
 		427E5F6D1D8B34C700A27BAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		427E5F6F1D8B34C700A27BAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		427E5F711D8B34C700A27BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		427E5F7B1D8B379E00A27BAB /* GameBoardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameBoardVC.swift; path = Controllers/GameBoardVC.swift; sourceTree = "<group>"; };
+		427E5F7F1D8B3B4D00A27BAB /* GameBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameBoardView.swift; path = View/GameBoardView.swift; sourceTree = "<group>"; };
+		427E5F811D8D8E8D00A27BAB /* GameStartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameStartVC.swift; path = Controllers/GameStartVC.swift; sourceTree = "<group>"; };
+		427E5F861D900D9D00A27BAB /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameModel.swift; path = Model/GameModel.swift; sourceTree = "<group>"; };
+		427E5F891D90122400A27BAB /* UIImage+Snapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Snapshot.swift"; path = "Extensions/UIImage+Snapshot.swift"; sourceTree = "<group>"; };
+		427E5F8B1D90370400A27BAB /* GameConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameConstants.swift; path = Model/GameConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,12 +114,50 @@
 		427E5F691D8B34C700A27BAB /* MessagesExtension */ = {
 			isa = PBXGroup;
 			children = (
-				427E5F6A1D8B34C700A27BAB /* MessagesViewController.swift */,
+				427E5F881D90120900A27BAB /* Extensions */,
+				427E5F851D900C0A00A27BAB /* Model */,
+				427E5F7E1D8B3B2C00A27BAB /* View */,
+				427E5F7D1D8B37A500A27BAB /* Controllers */,
 				427E5F6C1D8B34C700A27BAB /* MainInterface.storyboard */,
 				427E5F6F1D8B34C700A27BAB /* Assets.xcassets */,
 				427E5F711D8B34C700A27BAB /* Info.plist */,
 			);
 			path = MessagesExtension;
+			sourceTree = "<group>";
+		};
+		427E5F7D1D8B37A500A27BAB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				427E5F6A1D8B34C700A27BAB /* MessagesViewController.swift */,
+				427E5F7B1D8B379E00A27BAB /* GameBoardVC.swift */,
+				427E5F811D8D8E8D00A27BAB /* GameStartVC.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		427E5F7E1D8B3B2C00A27BAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				427E5F7F1D8B3B4D00A27BAB /* GameBoardView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		427E5F851D900C0A00A27BAB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				427E5F861D900D9D00A27BAB /* GameModel.swift */,
+				427E5F8B1D90370400A27BAB /* GameConstants.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		427E5F881D90120900A27BAB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				427E5F891D90122400A27BAB /* UIImage+Snapshot.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +264,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				427E5F6B1D8B34C700A27BAB /* MessagesViewController.swift in Sources */,
+				427E5F8A1D90122400A27BAB /* UIImage+Snapshot.swift in Sources */,
+				427E5F821D8D8E8D00A27BAB /* GameStartVC.swift in Sources */,
+				427E5F7C1D8B379E00A27BAB /* GameBoardVC.swift in Sources */,
+				427E5F8C1D90370400A27BAB /* GameConstants.swift in Sources */,
+				427E5F801D8B3B4D00A27BAB /* GameBoardView.swift in Sources */,
+				427E5F871D900D9D00A27BAB /* GameModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +461,7 @@
 				427E5F761D8B34C700A27BAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		427E5F781D8B34C700A27BAB /* Build configuration list for PBXNativeTarget "Tic Tac Toe for Messages" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +470,7 @@
 				427E5F7A1D8B34C700A27BAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

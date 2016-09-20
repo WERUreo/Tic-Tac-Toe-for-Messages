@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Messages View Controller-->
         <scene sceneID="7MM-of-jgj">
             <objects>
-                <viewController id="ObA-dk-sSI" customClass="MessagesViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ObA-dk-sSI" customClass="MessagesViewController" customModule="MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qkL-Od-lgU"/>
                         <viewControllerLayoutGuide type="bottom" id="n38-gi-rB5"/>
@@ -16,24 +18,106 @@
                     <view key="view" contentMode="scaleToFill" id="zMn-AG-sqS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello World" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1e-fi-ked">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="centerY" secondItem="d1e-fi-ked" secondAttribute="centerY" id="H0s-hz-dDP"/>
-                            <constraint firstAttribute="centerX" secondItem="d1e-fi-ked" secondAttribute="centerX" id="wFy-hW-Bib"/>
-                        </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="528"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Game BoardVC-->
+        <scene sceneID="xJM-zL-MSw">
+            <objects>
+                <viewController storyboardIdentifier="GameBoardVC" id="30v-e6-RR7" customClass="GameBoardVC" customModule="MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IwB-hI-cfM"/>
+                        <viewControllerLayoutGuide type="bottom" id="m39-Eg-Ntq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HcS-Qj-2DI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="M6N-PB-kbV" customClass="GameBoardView" customModule="MessagesExtension" customModuleProvider="target">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="M6N-PB-kbV" secondAttribute="height" multiplier="1:1" id="mLy-a9-YO7"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AuO-4S-Y0c">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3D-EN-hrZ">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="DcF-SE-rtE"/>
+                                </constraints>
+                                <state key="normal" title="End Turn"/>
+                                <connections>
+                                    <action selector="endTurnTapped:" destination="30v-e6-RR7" eventType="touchUpInside" id="gI5-Hj-ZRs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="M6N-PB-kbV" firstAttribute="centerX" secondItem="HcS-Qj-2DI" secondAttribute="centerX" id="5lf-rm-5ja"/>
+                            <constraint firstItem="m39-Eg-Ntq" firstAttribute="top" secondItem="q3D-EN-hrZ" secondAttribute="bottom" constant="20" id="Fzx-07-6a6"/>
+                            <constraint firstItem="M6N-PB-kbV" firstAttribute="width" secondItem="HcS-Qj-2DI" secondAttribute="width" id="GOJ-Gb-w2t"/>
+                            <constraint firstItem="M6N-PB-kbV" firstAttribute="centerY" secondItem="HcS-Qj-2DI" secondAttribute="centerY" id="Pwo-Rn-0UK"/>
+                            <constraint firstItem="q3D-EN-hrZ" firstAttribute="centerX" secondItem="HcS-Qj-2DI" secondAttribute="centerX" id="Trd-GK-6de"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="endTurnButton" destination="q3D-EN-hrZ" id="Uwr-qQ-Xyo"/>
+                        <outlet property="gameBoard" destination="M6N-PB-kbV" id="M26-Ne-qQu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d56-qn-HPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="768.79999999999995" y="536.58170914542734"/>
+        </scene>
+        <!--Game StartVC-->
+        <scene sceneID="c9u-IB-7nd">
+            <objects>
+                <viewController storyboardIdentifier="GameStartVC" id="6TN-2u-fbk" customClass="GameStartVC" customModule="MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vI4-2m-kYL"/>
+                        <viewControllerLayoutGuide type="bottom" id="3Te-w7-RcN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2w7-I0-wCZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yf1-OX-61n">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="jLi-Sz-c4x"/>
+                                </constraints>
+                                <state key="normal" title="Start Game"/>
+                                <connections>
+                                    <action selector="startGame:" destination="6TN-2u-fbk" eventType="touchUpInside" id="2IM-WP-JjP"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tic Tac Toe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQI-Dp-jvr">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yf1-OX-61n" firstAttribute="top" secondItem="GQI-Dp-jvr" secondAttribute="bottom" constant="8" id="833-k9-OIa"/>
+                            <constraint firstItem="yf1-OX-61n" firstAttribute="centerX" secondItem="2w7-I0-wCZ" secondAttribute="centerX" id="BUf-tr-cUh"/>
+                            <constraint firstItem="yf1-OX-61n" firstAttribute="centerY" secondItem="2w7-I0-wCZ" secondAttribute="centerY" id="ECZ-bZ-vXd"/>
+                            <constraint firstItem="GQI-Dp-jvr" firstAttribute="centerX" secondItem="2w7-I0-wCZ" secondAttribute="centerX" id="EYb-jB-APi"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GWH-lN-047" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="768.79999999999995" y="-121.88905547226388"/>
         </scene>
     </scenes>
 </document>
