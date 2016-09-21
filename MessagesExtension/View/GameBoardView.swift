@@ -32,19 +32,17 @@ class GameBoardView: UICollectionView
     {
         super.init(coder: aDecoder)
 
-        register(UICollectionViewCell.self, forCellWithReuseIdentifier: "GameCell")
+        self.dataSource = self
+        self.delegate = self
 
-        dataSource = self
-        delegate = self
-
-        if let layout = collectionViewLayout as? UICollectionViewFlowLayout
+        if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout
         {
             layout.minimumLineSpacing = 0
             layout.minimumInteritemSpacing = 0
         }
 
-        showsHorizontalScrollIndicator = false
-        showsVerticalScrollIndicator = false
+        self.showsHorizontalScrollIndicator = false
+        self.showsVerticalScrollIndicator = false
     }
 
     ////////////////////////////////////////////////////////////
@@ -52,7 +50,7 @@ class GameBoardView: UICollectionView
     override func layoutSubviews()
     {
         super.layoutSubviews()
-        contentOffset = CGPoint(x: 0, y: 0)
+        self.contentOffset = CGPoint(x: 0, y: 0)
     }
 }
 
@@ -96,7 +94,7 @@ extension GameBoardView
     {
         cellStyles[index] = selectionStyle
         let path = IndexPath(row: index, section: 0)
-        if let cell = cellForItem(at: path)
+        if let cell = cellForItem(at: path) as? GameCell
         {
             decorate(cell, for: selectionStyle)
         }
@@ -104,16 +102,16 @@ extension GameBoardView
 
     ////////////////////////////////////////////////////////////
 
-    fileprivate func decorate(_ cell: UICollectionViewCell, for style: CellStyle)
+    fileprivate func decorate(_ cell: GameCell, for style: CellStyle)
     {
         switch style
         {
             case .selectedX:
-                cell.backgroundColor = .green
+                cell.imageView.image = UIImage(named: "x")
             case .selectedO:
-                cell.backgroundColor = .red
+                cell.imageView.image = UIImage(named: "o")
             case .deselected:
-                cell.backgroundColor = UIColor(red:0.33, green:0.43, blue:0.54, alpha:1.00)
+                cell.imageView.image = nil
         }
     }
 }
@@ -140,7 +138,7 @@ extension GameBoardView: UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath) as! GameCell
         cell.layer.borderWidth = 5
         cell.layer.borderColor = UIColor.black.withAlphaComponent(0.5).cgColor
 

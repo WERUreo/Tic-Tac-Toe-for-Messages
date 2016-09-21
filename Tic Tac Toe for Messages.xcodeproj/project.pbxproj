@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42282B131D92C1AA007D2E41 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42282B121D92C1AA007D2E41 /* GameCell.swift */; };
 		427E5F5C1D8B34C700A27BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 427E5F5B1D8B34C700A27BAB /* Assets.xcassets */; };
 		427E5F631D8B34C700A27BAB /* MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 427E5F621D8B34C700A27BAB /* MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		427E5F681D8B34C700A27BAB /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427E5F671D8B34C700A27BAB /* Messages.framework */; };
@@ -46,6 +47,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		42282B121D92C1AA007D2E41 /* GameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameCell.swift; path = View/GameCell.swift; sourceTree = "<group>"; };
 		427E5F581D8B34C700A27BAB /* Tic Tac Toe for Messages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tic Tac Toe for Messages.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		427E5F5B1D8B34C700A27BAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		427E5F5D1D8B34C700A27BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				427E5F7F1D8B3B4D00A27BAB /* GameBoardView.swift */,
+				42282B121D92C1AA007D2E41 /* GameCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				427E5F6B1D8B34C700A27BAB /* MessagesViewController.swift in Sources */,
 				427E5F8A1D90122400A27BAB /* UIImage+Snapshot.swift in Sources */,
 				427E5F821D8D8E8D00A27BAB /* GameStartVC.swift in Sources */,
+				42282B131D92C1AA007D2E41 /* GameCell.swift in Sources */,
 				427E5F7C1D8B379E00A27BAB /* GameBoardVC.swift in Sources */,
 				427E5F8C1D90370400A27BAB /* GameConstants.swift in Sources */,
 				427E5F801D8B3B4D00A27BAB /* GameBoardView.swift in Sources */,
