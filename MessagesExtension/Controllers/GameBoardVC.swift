@@ -23,7 +23,7 @@ class GameBoardVC: MSMessagesAppViewController
     ////////////////////////////////////////////////////////////
 
     var onLocationSelectionComplete: ((_ gameState: GameModel, _ snapshot: UIImage) -> Void)?
-    var onGameCompletion: ((_ model: GameModel, _ snapshot: UIImage) -> Void)?
+    var onGameCompletion: ((_ model: GameModel, _ playerWon: Bool, _ snapshot: UIImage) -> Void)?
 
     var wasCellSelected: Bool = false
     var selectedCell: Int?
@@ -103,14 +103,27 @@ extension GameBoardVC
     func checkGameCompletion()
     {
         let snapshot = UIImage.snapshot(from: self.gameBoard)
-        let cellsToCheck: [Int] = (self.currentPlayer == .x) ? self.gameBoard.selectedCells(of: .selectedX) ?? [] : self.gameBoard.selectedCells(of: .selectedO) ?? []
+
+        let xCells = self.gameBoard.selectedCells(of: .selectedX) ?? []
+        let oCells = self.gameBoard.selectedCells(of: .selectedO) ?? []
+
+        let cellsToCheck: [Int] = (self.currentPlayer == .x) ? xCells : oCells
         for cells in GameConstants.winningCells
         {
             if Set(cells).isSubset(of: Set(cellsToCheck))
             {
                 self.model.isComplete = true
-                self.onGameCompletion?(self.model, snapshot)
+                self.onGameCompletion?(self.model, true, snapshot)
+                return
             }
         }
+
+        // If there were no matches and all cells are filled, then no one wins
+        if (xCells.count + oCells.count == GameConstants.gameBoardSize)
+        {
+            self.model.isComplete = true
+            self.onGameCompletion?(self.model, false, snapshot)
+        }
+
     }
 }

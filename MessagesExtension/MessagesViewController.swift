@@ -191,9 +191,9 @@ class MessagesViewController: MSMessagesAppViewController
 
         controller.onGameCompletion =
         { [unowned self]
-          model, snapshot in
+          model, playerWon, snapshot in
             let session = conversation.selectedMessage?.session ?? MSSession()
-            let caption = "$\(conversation.localParticipantIdentifier) won!"
+            let caption = playerWon ? "$\(conversation.localParticipantIdentifier) won!" : "No one wins this round."
 
             self.insertMessageWith(caption: caption, model, session, snapshot, in: conversation)
             self.dismiss()
