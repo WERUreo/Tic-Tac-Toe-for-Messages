@@ -48,7 +48,7 @@ class GameBoardVC: MSMessagesAppViewController
         }
 
         // Make sure we know how's turn it is, X or O
-        self.currentPlayer = model.turn
+        self.currentPlayer = self.model.turn
         setupBoard()
 
         gameBoard.onCellSelection =
@@ -112,7 +112,7 @@ extension GameBoardVC
         {
             if Set(cells).isSubset(of: Set(cellsToCheck))
             {
-                self.model.isComplete = true
+                self.model.isComplete = true	
                 self.onGameCompletion?(self.model, true, snapshot)
                 return
             }
